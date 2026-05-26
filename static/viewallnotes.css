@@ -1,0 +1,136 @@
+/* ================= VIEW ALL NOTES ================= */
+
+.notes-table-container{
+    width:100%;
+    padding:40px;
+}
+
+.table-card{
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+    overflow-x:auto;
+}
+
+/* HEADER */
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.table-header h2{
+    color:#0f172a;
+    font-size:32px;
+}
+
+
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#0f172a;
+    color:white;
+}
+
+th,
+td{
+    padding:16px;
+    text-align:left;
+}
+
+tbody tr{
+    border-bottom:1px solid #e2e8f0;
+
+    transition:0.3s;
+}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
+/* ACTION BUTTONS */
+
+.actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.actions a{
+    text-decoration:none;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    color:white;
+
+    font-size:14px;
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+/* VIEW */
+
+.view-btn{
+    background:#0ea5e9;
+}
+
+.view-btn:hover{
+    background:#0284c7;
+}
+
+/* UPDATE */
+
+.update-btn{
+    background:#22c55e;
+}
+
+.update-btn:hover{
+    background:#16a34a;
+}
+
+/* DELETE */
+
+.delete-btn{
+    background:#ef4444;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    .notes-table-container{
+        padding:20px;
+    }
+
+    .table-header{
+        flex-direction:column;
+        gap:15px;
+        align-items:flex-start;
+    }
+
+    th,
+    td{
+        padding:12px;
+    }
+}

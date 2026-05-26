@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul>
+{% for category, message in messages %}
+<li class="{{ category }}">{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+    <center>
+        <form method="POST">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter username" /><br><br>
+            <label>Email</label>
+            <input type="email" name="useremail" placeholder="Enter useremail" /><br><br>
+            <label>Password</label>
+            <input type="password" name="userpassword" placeholder="Enter userpassword" /><br><br>
+            <label>Mobile Number</label>
+            <input type="text" name="userphone_no" placeholder="Enter userphone_no" /><br><br>
+            <button>Register</button>
+        </form>
+    </center>
+</body>
+
+</html>

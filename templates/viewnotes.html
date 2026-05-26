@@ -1,0 +1,47 @@
+{% extends "dashboard.html" %}
+{% block addcss %}
+<link rel="stylesheet" href="/static/addnotes.css">{% endblock %}
+{% block content %}
+
+<div class="add-notes-container">
+
+    <div class="notes-card">
+
+        <h2>View Note</h2>
+
+        
+
+            <!-- TITLE -->
+
+            <div class="form-group">
+                <label for="title">Title</label>
+
+                <input 
+                    type="text"
+                    id="title"
+                    name="title"
+                    value="{{storednotesdata[1]}}"
+                    readonly
+                >
+            </div>
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+                <label for="description">Description</label>
+
+                <textarea 
+                    id="description"
+                    name="description"
+                    rows="8"
+                    readonly
+                >{{storednotesdata[2]}}</textarea>
+            </div>
+            {{storednotesdata[3]}}
+            
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Advanced Navbar</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/dashboard.css">
+  {% block addcss %}{% endblock %}
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <!-- LEFT -->
+    <div class="nav-left">
+
+      <div class="logo">
+        My<span>Portal</span>
+      </div>
+
+      <div class="menu">
+
+        <!-- NOTES MODULE -->
+        <div class="dropdown">
+          <button class="dropbtn">
+            Notes Module ▼
+          </button>
+
+          <div class="dropdown-content">
+            <a href="{{url_for('addnotes')}}">➕ Add Notes</a>
+            <a href="{{url_for('viewallnotes')}}">📄 View All Notes</a>
+            <a href="{{url_for('getexceldata')}}">📊 Get Excel Data</a>
+          </div>
+        </div>
+
+        <!-- FILES MODULE -->
+        <div class="dropdown">
+          <button class="dropbtn">
+            Files Module ▼
+          </button>
+
+          <div class="dropdown-content">
+            <a href="{{url_for('uploadfile')}}">📤 Upload File</a>
+            <a href="{{url_for('viewallfiles')}}">📁 View All Files</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {{session.get('user')}}
+    <!-- RIGHT -->
+    <div class="nav-right">
+      <form method='Post' action="{{url_for('search')}}">
+      <div class="search-box">
+        <input type="text" name="sdata" placeholder="Search notes or files...">
+      </div>
+
+      <button class="search-btn">
+        Search
+      </button>
+    </form>
+      <a href="{{url_for('logout')}}"<button class="logout-btn">
+        Logout
+      </button></a>
+
+    </div>
+
+  </nav>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block content %}
+  <!-- DEMO SECTION -->
+  <section class="hero">
+    <h1>Welcome to Dashboard</h1>
+    <p>
+      Stylish responsive navigation bar with advanced CSS effects,
+      animated dropdown menus, glowing buttons, responsive design,
+      smooth transitions, and modern UI styling.
+    </p>
+  </section>
+  {% endblock %}
+
+</body>
+</html>

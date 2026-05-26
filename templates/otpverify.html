@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6 Digit OTP Verification</title>
+
+
+</head>
+<body>
+
+<div class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul>
+{% for category, message in messages %}
+<li class="{{ category }}">{{ message }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+  <h2>Verify OTP</h2>
+  <p>Enter your 6-character OTP</p>
+
+  <form method="POST">
+
+    <div class="otp-box">
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+      <input type="text" maxlength="1" class="otp-input" required>
+    </div>
+
+    <!-- Hidden OTP -->
+    <input type="hidden" name="otp" id="fullOtp">
+
+    <button type="submit">Verify OTP</button>
+
+  </form>
+</div>
+
+<script>
+  const inputs = document.querySelectorAll(".otp-input");
+  const fullOtp = document.getElementById("fullOtp");
+
+  inputs.forEach((input, index) => {
+
+    input.addEventListener("input", (e) => {
+
+      // Allow only alphanumeric
+      input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+
+      // Move next
+      if(input.value.length === 1 && index < inputs.length - 1){
+        inputs[index + 1].focus();
+      }
+
+      updateOTP();
+    });
+
+    input.addEventListener("keydown", (e) => {
+
+      // Move back
+      if(e.key === "Backspace" && input.value === "" && index > 0){
+        inputs[index - 1].focus();
+      }
+    });
+  });
+
+  function updateOTP(){
+    let otp = "";
+
+    inputs.forEach(input => {
+      otp += input.value;
+    });
+
+    fullOtp.value = otp;
+  }
+</script>
+
+</body>
+</html>
