@@ -8,7 +8,7 @@ from mysql.connector import (connection) #used to connect Mysql server
 import flask_excel as excel #used to export data in excel format
 import re #used for regular expression operations
 
-mydb=connection.MySQLConnection(user='root',host='localhost',password='Aravind@3103',database='snm')
+mydb=connection.MySQLConnection(user='flaskuser',host='localhost',password='password',database='flaskdb')
 app=Flask(__name__)
 excel.init_excel(app)
 app.secret_key='code678'
@@ -488,4 +488,4 @@ def search():
         flash('Something wrong with search')
         return redirect(url_for('dashboard'))
 if __name__=='__main__':
-    app.run(debug=True,use_reloader=True)
+    app.run()
